@@ -20,4 +20,7 @@ class Cita extends Model
     public function localizacion(){
         return $this->hasOne('App\Localizacion');
     }
+
+    protected $casts = [
+        'is_admin' => 'boolean'
 }
