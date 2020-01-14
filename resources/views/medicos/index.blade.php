@@ -10,14 +10,14 @@
                     <div class="panel-body">
                         @include('flash::message')
                         {!! Form::open(['route' => 'medicos.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear medico', ['class'=> 'btn btn-primary'])!!}
+                        {!!   Form::submit('Crear médico', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
-                                <th>Apellidos</th>
+                                <th>Apellido</th>
                                 <th>Especialidad</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
@@ -26,10 +26,9 @@
 
 
                                 <tr>
-                                    <td>{{ $medico->name }}</td>
-                                    <td>{{ $medico->surname }}</td>
-                                    <td>{{ $medico->especialidad->name }}</td>
-
+                                    <td>{{ $medico->nombre }}</td>
+                                    <td>{{ $medico->apellido }}</td>
+                                    <td>{{ $medico->especialidad_id}}</td>
                                     <td>
                                         {!! Form::open(['route' => ['medicos.edit',$medico->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

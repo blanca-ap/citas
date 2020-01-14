@@ -18,11 +18,13 @@ class PacientesAseguradoraTable extends Migration
 
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
+            $table->string('nombre');
+            $table->string('apellido');
             $table->string('nuhsa');
             $table->unsignedInteger('aseguradora_id')->nullable();
             $table->foreign('aseguradora_id')->references('id')->on('aseguradoras');
+            $table->unsignedInteger('enfermedad_id');
+            $table->foreign('enfermedad_id')->references('id')->on('enfermedads')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -38,8 +40,8 @@ class PacientesAseguradoraTable extends Migration
 
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
+            $table->string('nombre');
+            $table->string('apellido');
             $table->string('nuhsa');
             $table->timestamps();
         });

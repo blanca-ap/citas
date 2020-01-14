@@ -13,17 +13,17 @@
                         {!! Form::model($medico, [ 'route' => ['medicos.update',$medico->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('name', 'Nombre del medico') !!}
-                            {!! Form::text('name',$medico->name,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::label('nombre', 'Nombre del medico') !!}
+                            {!! Form::text('nombre',$medico->nombre,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('surname', 'Apellidos del medico') !!}
-                            {!! Form::text('surname',$medico->surname,['class'=>'form-control', 'required']) !!}
+                            {!! Form::label('apellido', 'Apellidos del medico') !!}
+                            {!! Form::text('apellido',$medico->apellido,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!!Form::label('especialidad_id', 'Especialidad medico') !!}
                             <br>
-                            {!! Form::select('especialidad_id', $especialidades, $medico->especialidad_id, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::select('especialidad_id', $especialidads, $medico->especialidad_id, ['class' => 'form-control', 'required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

@@ -1,11 +1,14 @@
 <?php
+
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 use App\Localizacion;
 
 
 class LocalizacionController extends Controller
 {
-
 
     public function __construct()
     {
@@ -31,8 +34,6 @@ class LocalizacionController extends Controller
      */
     public function create()
     {
-
-
         return view('localizacions/create');
     }
 
@@ -47,6 +48,7 @@ class LocalizacionController extends Controller
         $this->validate($request, [
             'latitud' => 'required|integer|min:0',
             'longitud' =>'required|integer|min:0',
+            'nombre' => 'required|max:255',
 
         ]);
 
@@ -79,7 +81,7 @@ class LocalizacionController extends Controller
     public function edit($id)
     {
 
-        $localizacion = Localizacions::find($id);
+        $localizacion = Localizacion::find($id);
 
 
         return view('localizacions/edit',['localizacion'=>$localizacion]);
@@ -97,6 +99,7 @@ class LocalizacionController extends Controller
         $this->validate($request, [
             'latitud' => 'required|integer|min:0',
             'longitud' =>'required|integer|min:0',
+            'nombre' =>'required|max:255',
 
         ]);
         $localizacion= Localizacion::find($id);

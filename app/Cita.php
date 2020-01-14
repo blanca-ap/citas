@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_hora', 'duracion', 'medico_id', 'paciente_id','localizacion_id'];
+    protected $fillable = ['fecha_hora', 'fecha_fin', 'medico_id', 'paciente_id','localizacion_id'];
 
     public function medico()
     {
@@ -20,7 +20,6 @@ class Cita extends Model
     public function localizacion(){
         return $this->hasOne('App\Localizacion');
     }
+    protected $dates = ['fecha_hora', 'fecha_fin'];
 
-    protected $casts = [
-        'is_admin' => 'boolean'
 }

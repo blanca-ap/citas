@@ -13,12 +13,16 @@
                         {!! Form::model($cita, [ 'route' => ['citas.update',$cita->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
+                            {!! Form::label('fecha_hora', 'Fecha y hora de inicio de la cita') !!}
 
 
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->addMinute()->format('Y-m-d\TH:i')}}" />
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('fecha_fin', 'Fecha y hora de fin de la cita') !!}
 
 
+                            <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{Carbon\Carbon::now()->addMinutes(15)->format('Y-m-d\TH:i')}}" />
                         </div>
 
                         <div class="form-group">
@@ -30,6 +34,11 @@
                             {!!Form::label('paciente_id', 'Paciente') !!}
                             <br>
                             {!! Form::select('paciente_id', $pacientes, $cita->paciente_id, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('localizacion_id', 'Localizacion') !!}
+                            <br>
+                            {!! Form::select('localizacion_id', $localizacions, $cita->localizacion_id, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

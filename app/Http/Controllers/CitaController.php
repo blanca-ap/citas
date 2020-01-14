@@ -37,11 +37,11 @@ class CitaController extends Controller
      */
     public function create()
     {
-        $medicos = Medico::all()->pluck('full_name','id');
+        $medicos = Medico::all()->pluck('nombre','id');
 
-        $pacientes = Paciente::all()->pluck('full_name','id');
+        $pacientes = Paciente::all()->pluck('nombre','id');
 
-        $localizacions = Localizacion::all()->pluck('full_name','id');
+        $localizacions = Localizacion::all()->pluck('nombre','id');
 
 
         return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'localizacions'=>$localizacions]);
@@ -55,16 +55,23 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'localizacion_id' => 'required|exists:localizacions,id',
             'fecha_hora' => 'required|date|after:now',
-            'duracion' => 'required|integer|min:0',
+            'fecha_fin' => 'required|date|after:now',
+
+
 
         ]);
 
+
         $cita = new Cita($request->all());
+        $cita->fecha_fin = $cita->fecha_hora->addMinutes(15);
         $cita->save();
 
 
@@ -95,11 +102,11 @@ class CitaController extends Controller
 
         $cita = Cita::find($id);
 
-        $medicos = Medico::all()->pluck('full_name','id');
+        $medicos = Medico::all()->pluck('nombre','id');
 
-        $pacientes = Paciente::all()->pluck('full_name','id');
+        $pacientes = Paciente::all()->pluck('nombre','id');
 
-        $localizacions = Localizacion::all()->pluck('full_name','id');
+        $localizacions = Localizacion::all()->pluck('nombre','id');
 
 
         return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'localizacions'=>$localizacions]);
@@ -119,9 +126,11 @@ class CitaController extends Controller
             'paciente_id' => 'required|exists:pacientes,id',
             'localizacion_id' => 'required|exists:localizacion,id',
             'fecha_hora' => 'required|date|after:now',
-            'duracion' => 'required|integer|min:0',
+            'fecha_fin' => 'required|date|after:now',
+
 
         ]);
+
         $cita = Cita::find($id);
         $cita->fill($request->all());
 

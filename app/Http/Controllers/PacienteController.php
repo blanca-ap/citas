@@ -35,7 +35,7 @@ class PacienteController extends Controller
     public function create()
     {
         //
-        $enfermedads = Enfermedad::all()->pluck('full_name','id');
+        $enfermedads = Enfermedad::all()->pluck('nombre','id');
         return view('pacientes/create',['enfermedads'=>$enfermedads]);
 
     }
@@ -52,7 +52,7 @@ class PacienteController extends Controller
         $this->validate($request, [
             'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
-            'nuhsa' => 'required|regex:/^AN[0,9]{10}$/',
+            'nuhsa' => 'required|max:225', //**regex:/^AN[0,9]{10}$/
             'enfermedad_id' => 'required|exists:enfermedads,id',
         ]);
 
@@ -87,7 +87,7 @@ class PacienteController extends Controller
     public function edit($id)
     {
         $paciente = Paciente::find($id);
-        $enfermedads = Enfermedad::all()->pluck('full_name','id');
+        $enfermedads = Enfermedad::all()->pluck('nombre','id');
 
         return view('pacientes/edit',['paciente'=> $paciente, 'enfermedads'=>$enfermedads]);
     }
@@ -102,8 +102,8 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'surname' => 'required|max:255',
+            'nombre' => 'required|max:255',
+            'apellido' => 'required|max:255',
             'nuhsa' => 'required|regex:/^AN[0,9]{10}$/',
             'enfermedad_id' => 'required|exists:enfermedad,id',
         ]);

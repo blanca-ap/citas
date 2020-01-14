@@ -13,16 +13,21 @@
                         {!! Form::model($paciente, [ 'route' => ['pacientes.update',$paciente->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('name', 'Nombre del paciente') !!}
-                            {!! Form::text('name',$paciente->name,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::label('nombre', 'Nombre del paciente') !!}
+                            {!! Form::text('nombre',$paciente->nombre,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('surname', 'Apellidos del paciente') !!}
-                            {!! Form::text('surname',$paciente->surname,['class'=>'form-control', 'required']) !!}
+                            {!! Form::label('apellido', 'Apellidos del paciente') !!}
+                            {!! Form::text('apellido',$paciente->apellido,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('nuhsa', 'NUHSA del paciente') !!}
                             {!! Form::text('nuhsa',$paciente->nuhsa,['class'=>'form-control', 'required']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('enfermedad_id', 'Enfermedad paciente') !!}
+                            <br>
+                            {!! Form::select('enfermedad_id', $enfermedads, $paciente->enfermedad_id, ['class' => 'form-control', 'required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

@@ -10,10 +10,10 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::open(['route' => 'especialidades.store', 'class'=>'form-inline']) !!}
+                        {!! Form::open(['route' => 'especialidads.store', 'class'=>'form-inline']) !!}
                         <div class="form-group">
-                        {!! Form::label('name', 'Nombre de la especialidad') !!}
-                        {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        {!! Form::label('nombre', 'Nombre de la especialidad') !!}
+                        {!! Form::text('nombre',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

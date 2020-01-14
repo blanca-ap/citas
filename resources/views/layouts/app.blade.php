@@ -66,7 +66,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/especialidades') }}">
+                                        <a href="{{ url('especialidads') }}">
                                             Especialidades
                                         </a>
                                     </li>
@@ -82,6 +82,20 @@
                                             Citas
                                         </a>
                                     </li>
+
+                                    <li>
+                                        <a href="{{ url('/enfermedads') }}">
+                                            Enfermedades
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ url('/localizacions') }}">
+                                            Localizaciones
+                                        </a>
+                                    </li>
+
+
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                            onclick="event.preventDefault();

@@ -51,7 +51,7 @@ class EspecialidadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'nombre' => 'required|max:255',
         ]);
 
         //
@@ -100,7 +100,7 @@ class EspecialidadController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'nombre' => 'required|max:255',
         ]);
 
         $especialidad = Especialidad::find($id);
@@ -132,7 +132,7 @@ class EspecialidadController extends Controller
     public function destroyAll()
     {
         Especialidad::truncate();
-        flash('Todas las especialidades borradas correctamente');
+        flash('Todas las especialidads borradas correctamente');
 
         return redirect()->route('especialidads.index');
     }

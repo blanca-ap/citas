@@ -15,15 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Poner las acciones definidas por el programador antes del CRUD por defecto que monta Laravel
-Route::delete('especialidades/destroyAll', 'EspecialidadController@destroyAll')->name('especialidades.destroyAll');
-Route::resource('especialidades', 'EspecialidadController');
-
+Route::delete('especialidads/destroyAll', 'EspecialidadController@destroyAll')->name('especialidads.destroyAll');
+Route::resource('especialidads', 'EspecialidadController');
 Route::resource('medicos', 'MedicoController');
 Route::resource('pacientes', 'PacienteController');
-
-
 Route::resource('citas', 'CitaController');
-
+Route::resource('enfermedads', 'EnfermedadController');
+Route::resource('localizacions', 'LocalizacionController');
 
 
 
